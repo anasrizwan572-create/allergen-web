@@ -35,6 +35,6 @@ async function send() {
     const data = await res.json();
     loading.textContent = data.answer || data.error || "No response.";
   } catch {
-    loading.textContent = "Server tak pohnch nahi saka.";
+    loading.textContent = "Could not reach the server.";
   }
 }
