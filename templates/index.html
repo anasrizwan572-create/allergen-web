@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Allergen Assistant</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+            <div>
+                <h2>Food Allergen Assistant</h2>
+                <p>Ask about dishes, ingredients and allergens</p>
+            </div>
+            <i class="fa-solid fa-utensils"></i>
+        </div>
+
+        <div id="chat-box" class="chat-box">
+            <div class="bot-message">
+                Hello! 👋 Ask me about food, ingredients, allergens, price or dishes.
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <input
+                type="text"
+                id="user-input"
+                placeholder="Ask something about food..."
+                autocomplete="off"
+            >
+
+            <button id="send-btn">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+
+</body>
+</html>
