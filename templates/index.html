@@ -1,40 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Allergen Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-
-  <!-- Landing page -->
   <header class="hero">
-    <h1><i class="fa-solid fa-utensils"></i> Allergen-Safe Food Delivery</h1>
-    <p>Tell us your allergies and instantly find out the ingredients and allergens in every dish.</p>
-    <button class="hero-btn" id="hero-chat-btn">Start Chat</button>
+    <div class="hero-inner">
+      <p class="brand"><i class="fa-solid fa-bowl-food"></i> Food Allergen Assistant</p>
+      <h1>Know what's in your dish before you order.</h1>
+      <p class="lead">Tell us your allergies. We check every ingredient and answer in seconds.</p>
+      <div class="chips" aria-label="Quick questions">
+        <button class="chip" data-q="Which dishes are nut-free?">Nut-free</button>
+        <button class="chip" data-q="Which dishes are dairy-free?">Dairy-free</button>
+        <button class="chip" data-q="Which dishes are gluten-free?">Gluten-free</button>
+        <button class="chip" data-q="Which dishes are vegan?">Vegan</button>
+      </div>
+      <button class="cta" id="hero-chat-btn">Start chat</button>
+    </div>
   </header>
 
-  <section class="features">
+  <main class="facts">
+    <div class="fact"><i class="fa-solid fa-shield-heart"></i><div><h3>Allergen safety</h3><p>Nuts, dairy, gluten and more, flagged per dish.</p></div></div>
+    <div class="fact"><i class="fa-solid fa-magnifying-glass"></i><div><h3>Ingredient search</h3><p>Ask what goes into any dish.</p></div></div>
+    <div class="fact"><i class="fa-solid fa-tags"></i><div><h3>Prices</h3><p>See what a dish costs while you check it.</p></div></div>
+  </main>
 
-  <div class="feature"><i class="fa-solid fa-shield-heart"></i><h3>Allergen Safety</h3><p>Know about nuts, dairy, gluten and more.</p></div>
-  <div class="feature"><i class="fa-solid fa-magnifying-glass"></i><h3>Ingredient Search</h3><p>Ask about the ingredients in any dish.</p></div>
-  <div class="feature"><i class="fa-solid fa-tags"></i><h3>Price Info</h3><p>Check the price of dishes too.</p></div>
-</section>
+  <button id="chat-toggle" aria-label="Open chat" aria-expanded="false"><i class="fa-solid fa-comment-dots"></i></button>
 
-  <!-- Floating button -->
-  <button id="chat-toggle" aria-label="Open chat"><i class="fa-solid fa-comment-dots"></i></button>
-
-  <!-- Chat pop-up (aapka purana card) -->
-  <div id="chat-popup" class="hidden">
+  <section id="chat-popup" aria-label="Food Allergen Assistant chat" aria-hidden="true">
     <div class="chat-header">
-      <div>
+      <span class="avatar"><i class="fa-solid fa-bowl-food"></i></span>
+      <div class="title">
         <h2>Food Allergen Assistant</h2>
-        <small>Ask about dishes, ingredients and allergens</small>
+        <small><span class="dot"></span>Ask about dishes, ingredients and allergens</small>
       </div>
-      <button id="chat-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <button id="chat-min" aria-label="Minimize chat"><i class="fa-solid fa-minus"></i></button>
+      <button id="chat-close" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
     </div>
-    <div id="chat-messages">
+    <div id="chat-messages" aria-live="polite">
       <div class="msg bot">Hello! 👋 Ask me about food, ingredients, allergens, price or dishes.</div>
+      <div class="suggest">
+        <button class="chip small" data-q="Does the pad thai contain nuts?">Does the pad thai contain nuts?</button>
+        <button class="chip small" data-q="What vegan dishes do you have?">Vegan dishes</button>
+      </div>
     </div>
     <div class="chat-input">
-      <input id="chat-text" type="text" placeholder="Ask something about food...">
-      <button id="chat-send"><i class="fa-solid fa-paper-plane"></i></button>
+      <input id="chat-text" type="text" placeholder="Ask something about food..." autocomplete="off">
+      <button id="chat-send" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
     </div>
-  </div>
+  </section>
 
-  <script src="/static/chat.js"></script>
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
 </body>
 </html>
